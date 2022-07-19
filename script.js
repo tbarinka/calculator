@@ -26,7 +26,7 @@ const operate = function(operator, num1, num2) {
 }
 
 
-  
+const opContainer = document.querySelector('#OP-container');  
 const display = document.querySelector('#display')
 const btns = document.querySelectorAll('.btn');
 const btn1 = document.querySelector('#btn-1');
@@ -41,6 +41,9 @@ const btn9 = document.querySelector('#btn-9');
 const btnAC = document.querySelector('#btn-AC');
 const operatorBtns = document.querySelectorAll('.operator');
 const addBtn = document.querySelector('#btn-add');
+const divideBtn = document.querySelector('#btn-divide');
+const multiplyBtn = document.querySelector('#btn-multiply');
+const subtractBtn = document.querySelector('#btn-subtract');
 
 
 btn1.addEventListener('click', function() {
@@ -74,16 +77,30 @@ btnAC.addEventListener('click', function() {
   display.textContent = "";
 });
 
-operatorBtns.forEach(operator => {
-  operator.addEventListener('click', function() {
-    const tempA = display.textContent;
-    console.log(tempA);
-  })
-
+//listeners to store OP value for operate function
+addBtn.addEventListener('click', function() {
+  opContainer.textContent = "+";
+});
+divideBtn.addEventListener('click', function() {
+  opContainer.textContent = "/";
+});
+multiplyBtn.addEventListener('click', function() {
+  opContainer.textContent = "x";
+});
+subtractBtn.addEventListener('click', function() {
+  opContainer.textContent = "-";
 });
 
 
-//1. store display value tempA
+
+operatorBtns.forEach(operator => {  
+  operator.addEventListener('click', function() {
+    const tempA = display.textContent;
+  })
+});
+
+
+//1X. store display value tempA
   //& store operator as value OP
 //2. add event listener for equals
   //on equals, do two things:
