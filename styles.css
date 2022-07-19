@@ -1,11 +1,32 @@
 .flex-container {
-
-}
-.row {
-
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    border: 5px solid black
 }
 #display {
-    width: 220px;
+    width: 170px;
+    margin: 5px;
     height: 40px;
-    background-color: gray;
+    background-color: rgb(218, 204, 204);
+    border: 2px solid black;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 170px;
+    justify-content: space-around;
+}
+.btn {
+    margin: 5px
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 30px;
+}
+#AC {
+    width: 72px;
 }
