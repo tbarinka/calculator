@@ -9,6 +9,10 @@
     border: 5px solid black
 }
 #display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
     width: 170px;
     margin: 5px;
     height: 40px;
