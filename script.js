@@ -13,7 +13,7 @@ const divide = function(a, b) {
     return a / b;
 }
   
-const operate = function(num1, num2, operator) {
+const operate = function(operator, num1, num2) {
   if (operator == "+") {
     return add(num1, num2);
   } else if (operator == "-") {
@@ -28,7 +28,7 @@ const operate = function(num1, num2, operator) {
 
   
 const display = document.querySelector('#display')
-const btn = document.querySelectorAll('.btn');
+const btns = document.querySelectorAll('.btn');
 const btn1 = document.querySelector('#btn-1');
 const btn2 = document.querySelector('#btn-2');
 const btn3 = document.querySelector('#btn-3');
@@ -39,7 +39,8 @@ const btn7 = document.querySelector('#btn-7');
 const btn8 = document.querySelector('#btn-8');
 const btn9 = document.querySelector('#btn-9');
 const btnAC = document.querySelector('#btn-AC');
-const operatorBtn = document.querySelectorAll('.operator');
+const operatorBtns = document.querySelectorAll('.operator');
+const addBtn = document.querySelector('#btn-add');
 
 
 btn1.addEventListener('click', function() {
@@ -73,18 +74,36 @@ btnAC.addEventListener('click', function() {
   display.textContent = "";
 });
 
-btn.forEach(button => {
-  button.addEventListener('click', function() {
-    const temp = display.textContent;
-    console.log(temp);
-    
+operatorBtns.forEach(operator => {
+  operator.addEventListener('click', function() {
+    const tempA = display.textContent;
+    console.log(tempA);
   })
+
 });
 
 
+//1. store display value tempA
+  //& store operator as value OP
+//2. add event listener for equals
+  //on equals, do two things:
+      //store display value as tempB
+      //pass OP, tempA, and tempB into operate function
+//4. return operate(OP, tempA, tempB)
 
 
-//store the display value in a variable
+
+
+//add Event listener for ADD function, such that a click triggers this event:
+  //store the display value as TempA
+  //clear text content
+  //await input as TempB
+  //'click =' does two things:
+    //1. stores display.textContent as tempB
+    //2. passes tempA and tempB into addition
+
+
+
 
 
 

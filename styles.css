@@ -24,13 +24,22 @@
     flex-direction: row;
     width: 170px;
     justify-content: space-around;
+    margin-bottom: 3px;
+    margin-top: 3px;
 }
 .btn {
-    margin: 5px
-    margin-bottom: 5px;
-    margin-top: 5px;
+
+    margin-bottom: 3px;
+    margin-top: 3px;
     width: 30px;
 }
-#AC {
-    width: 72px;
+.operator {
+    margin-bottom: 3px;
+    margin-top: 3px;
+    width: 30px;
+}
+#btn-AC {
+    margin-bottom: 3px;
+    margin-top: 3px;
+    width: 73px;
 }
