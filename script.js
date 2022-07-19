@@ -77,7 +77,8 @@ btnAC.addEventListener('click', function() {
   display.textContent = "";
 });
 
-//listeners to store OP value for operate function
+//these listeners store an intended value for an operation. Thus: click addBtn stores "+" in an invisible div,
+  //which the operatorBtns.forEach listener will use to pass into the operate function
 addBtn.addEventListener('click', function() {
   opContainer.textContent = "+";
 });
@@ -92,10 +93,10 @@ subtractBtn.addEventListener('click', function() {
 });
 
 
-
 operatorBtns.forEach(operator => {  
   operator.addEventListener('click', function() {
     const tempA = display.textContent;
+    const OP = opContainer.textContent;
   })
 });
 
