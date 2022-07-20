@@ -52,36 +52,87 @@ const subtractBtn = document.querySelector('#btn-subtract');
 let tempA = "";
 let OP = "";
 let tempB = "";
+let trigger = "";
 
 btn0.addEventListener('click', function() {
-  display.textContent += 0;
+  if (trigger == 1) {
+    display.textContent = 0;
+    trigger = 0;
+  } else {
+    display.textContent += 0;
+  }
 });
 btn1.addEventListener('click', function() {
-  display.textContent += 1;
+  if (trigger == 1) {
+    display.textContent = 1;
+    trigger = 0;
+  } else {
+    display.textContent += 1;
+  }
 });
 btn2.addEventListener('click', function() {
-  display.textContent += 2;
+  if (trigger == 1) {
+    display.textContent = 2;
+    trigger = 0;
+  } else {
+    display.textContent += 2;
+  }
 });
 btn3.addEventListener('click', function() {
-  display.textContent += 3;
+  if (trigger == 1) {
+    display.textContent = 3;
+    trigger = 0;
+  } else {
+    display.textContent += 3;
+  }
 });
 btn4.addEventListener('click', function() {
-  display.textContent += 4;
+  if (trigger == 1) {
+    display.textContent = 4;
+    trigger = 0;
+  } else {
+    display.textContent += 4;
+  }
 });
 btn5.addEventListener('click', function() {
-  display.textContent += 5;
+  if (trigger == 1) {
+    display.textContent = 5;
+    trigger = 0;
+  } else {
+    display.textContent += 5;
+  }
 });
 btn6.addEventListener('click', function() {
-  display.textContent += 6;
+  if (trigger == 1) {
+    display.textContent = 6;
+    trigger = 0;
+  } else {
+    display.textContent += 6;
+  }
 });
 btn7.addEventListener('click', function() {
-  display.textContent += 7;
+  if (trigger == 1) {
+    display.textContent = 7;
+    trigger = 0;
+  } else {
+    display.textContent += 7;
+  }
 });
 btn8.addEventListener('click', function() {
-  display.textContent += 8;
+  if (trigger == 1) {
+    display.textContent = 8;
+    trigger = 0;
+  } else {
+    display.textContent += 8;
+  }
 });
 btn9.addEventListener('click', function() {
-  display.textContent += 9;
+  if (trigger == 1) {
+    display.textContent = 9;
+    trigger = 0;
+  } else {
+    display.textContent += 9;
+  }
 });
 
 btnAC.addEventListener('click', function() {
@@ -92,48 +143,79 @@ btnAC.addEventListener('click', function() {
 });
 
 
-//these listeners store an intended value for an operation. Thus: click addBtn stores "+" in an invisible div,
-  //which the operatorBtns.forEach listener will use to pass into the operate function
 addBtn.addEventListener('click', function() {
-  OP = "add";
+  if (tempA == "") {
+    OP = "add";
+    tempA = display.textContent;
+    trigger = 1;
+  } else if (tempA !== "") {
+    OP = "add";
+    tempB = display.textContent;
+    display.textContent = operate(OP, tempA, tempB);
+    tempA = operate(OP, tempA, tempB);
+    tempB = "";
+    trigger = 1
+    //the trigger tells the 1-9 btns when to clear the display
+    };
 });
+
 divideBtn.addEventListener('click', function() {
-  OP = "divide";
+  if (tempA == "") {
+    OP = "divide";
+    tempA = display.textContent;
+    trigger = 1;
+  } else if (tempA !== "") {
+    OP = "divide";
+    tempB = display.textContent;
+    display.textContent = operate(OP, tempA, tempB);
+    tempA = operate(OP, tempA, tempB);
+    tempB = "";
+    trigger = 1
+    //the trigger tells the 1-9 btns when to clear the display
+    };
 });
+
 multiplyBtn.addEventListener('click', function() {
-  OP = "multiply";
+  if (tempA == "") {
+    OP = "multiply";
+    tempA = display.textContent;
+    trigger = 1;
+  } else if (tempA !== "") {
+    OP = "multiply";
+    tempB = display.textContent;
+    display.textContent = operate(OP, tempA, tempB);
+    tempA = operate(OP, tempA, tempB);
+    tempB = "";
+    trigger = 1
+    //the trigger tells the 1-9 btns when to clear the display
+    };
 });
 subtractBtn.addEventListener('click', function() {
-  OP = "subtract";
+  if (tempA == "") {
+    OP = "subtract";
+    tempA = display.textContent;
+    trigger = 1;
+  } else if (tempA !== "") {
+    OP = "subtract";
+    tempB = display.textContent;
+    display.textContent = operate(OP, tempA, tempB);
+    tempA = operate(OP, tempA, tempB);
+    tempB = "";
+    trigger = 1
+    //the trigger tells the 1-9 btns when to clear the display
+    };
 });
 
-
-function storeTempA() {
-  tempA = display.textContent;
-  console.log(tempA);
-  display.textContent = "";
-}
-function storeTempB() {
-  tempB = display.textContent;
-  display.textContent = operate(OP, tempA, tempB);
-}
-
-operatorBtns.forEach(operator => {  
-  operator.addEventListener('click', function() {
-    tempA = display.textContent;
-    display.textContent = "";
-    console.log("tempA " + tempA);
-    console.log("OP " + OP);
-    })
-})
 
 equalBtn.addEventListener('click', function(){
   tempB = display.textContent;
-  display.textContent = "";
   display.textContent = operate(OP, tempA, tempB);
   tempA = "";
   tempB = "";
   OP = "";
+  trigger = 1;
+
+  //add code for: if tempA = NaN or "";
 });
 
 
