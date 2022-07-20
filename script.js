@@ -49,6 +49,10 @@ const divideBtn = document.querySelector('#btn-divide');
 const multiplyBtn = document.querySelector('#btn-multiply');
 const subtractBtn = document.querySelector('#btn-subtract');
 
+let tempA = "";
+let OP = "";
+let tempB = "";
+
 btn0.addEventListener('click', function() {
   display.textContent += 0;
 });
@@ -82,42 +86,79 @@ btn9.addEventListener('click', function() {
 
 btnAC.addEventListener('click', function() {
   display.textContent = "";
-  opContainer.textContent = "";
+  OP = "";
+  tempA = "";
+  tempB = "";
 });
+
 
 //these listeners store an intended value for an operation. Thus: click addBtn stores "+" in an invisible div,
   //which the operatorBtns.forEach listener will use to pass into the operate function
 addBtn.addEventListener('click', function() {
-  opContainer.textContent = "add";
+  OP = "add";
 });
 divideBtn.addEventListener('click', function() {
-  opContainer.textContent = "divide";
+  OP = "divide";
 });
 multiplyBtn.addEventListener('click', function() {
-  opContainer.textContent = "multiply";
+  OP = "multiply";
 });
 subtractBtn.addEventListener('click', function() {
-  opContainer.textContent = "subtract";
+  OP = "subtract";
 });
 
+
+function storeTempA() {
+  tempA = display.textContent;
+  console.log(tempA);
+  display.textContent = "";
+}
+function storeTempB() {
+  tempB = display.textContent;
+  display.textContent = operate(OP, tempA, tempB);
+}
 
 operatorBtns.forEach(operator => {  
   operator.addEventListener('click', function() {
-    const tempA = display.textContent;
-    const OP = opContainer.textContent;
+    tempA = display.textContent;
     display.textContent = "";
     console.log("tempA " + tempA);
     console.log("OP " + OP);
-
-    equalBtn.addEventListener('click', function(){
-      const tempB = display.textContent;
-      console.log("tempA " + tempA);
-      console.log("tempB " + tempB);
-      console.log("OP " + OP);
-      display.textContent = operate(OP, tempA, tempB);
     })
-  })
+})
+
+equalBtn.addEventListener('click', function(){
+  tempB = display.textContent;
+  display.textContent = "";
+  display.textContent = operate(OP, tempA, tempB);
+  tempA = "";
+  tempB = "";
+  OP = "";
 });
+
+
+
+
+//operatorBtns.forEach(operator => {  
+  //operator.addEventListener('click', function() {
+    //tempA = display.textContent;
+    //display.textContent = "";
+   // console.log("tempA " + tempA);
+   // console.log("OP " + OP);
+    
+   // equalBtn.addEventListener('click', function(){
+    //  tempB = display.textContent;
+   //   display.textContent = "";
+    //  display.textContent = operate(OP, tempA, tempB);
+    //  tempA = "";
+   //  tempB = "";
+    //  OP = "";
+  //  })
+ // })
+//});
+
+
+
 
 
 //1X. store display value tempA
