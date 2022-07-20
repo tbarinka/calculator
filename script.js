@@ -1,25 +1,26 @@
-
-
 const add = function(a, b) {
-    return parseInt(a) + parseInt(b);	
+    return (parseInt(a) + parseInt(b)).toFixed(13);	
    };
 const subtract = function(a, b) {
-    return parseInt(a) - parseInt(b);
+    return (parseInt(a) - parseInt(b)).toFixed(13);
 };   
 const multiply = function(a, b) {
-    return parseInt(a) * parseInt(b);
+    return (parseInt(a) * parseInt(b)).toFixed(13);
 };  
 const divide = function(a, b) {
-    return parseInt(a) / parseInt(b);
+    return (parseInt(a) / parseInt(b)).toFixed(13);
 }
   
 const operate = function(operator, num1, num2) {
+
   if (operator == "add") {
     return add(num1, num2);
   } else if (operator == "subtract") {
     return subtract(num1, num2);
   } else if (operator == "multiply") {
     return multiply(num1, num2);
+  } else if (operator == "divide" && num2 == 0) {
+    return display.textContent = "ERROR";
   } else if (operator == "divide") {
     return divide(num1, num2);
   }
@@ -137,14 +138,28 @@ btn9.addEventListener('click', function() {
   }
 });
 
+//AC and =
 btnAC.addEventListener('click', function() {
-  display.textContent = "";
+  display.textContent = "0";
   OP = "";
   tempA = "";
   tempB = "";
+  trigger = 1;
+});
+equalBtn.addEventListener('click', function(){
+  if (tempA == ("") || OP == ("")) {
+    trigger = 1;
+  } else {
+    tempB = display.textContent;
+    display.textContent = operate(OP, tempA, tempB);
+    tempA = "";
+    tempB = "";
+    OP = "";
+    trigger = 1;
+  }
 });
 
-
+//operator functions
 addBtn.addEventListener('click', function() {
   if (tempA == "") {
     OP = "add";
@@ -209,15 +224,6 @@ multiplyBtn.addEventListener('click', function() {
 
 
 
-equalBtn.addEventListener('click', function(){
-  tempB = display.textContent;
-  display.textContent = operate(OP, tempA, tempB);
-  tempA = "";
-  tempB = "";
-  OP = "";
-  trigger = 1;
-  //add code for: if tempA = NaN or "";
-});
 
 
 
@@ -225,16 +231,6 @@ equalBtn.addEventListener('click', function(){
 
 
 
-
-
-//1X. store display value tempA
-  //&X store operator as value OP
-//2. add event listener for equals
-  //on equals, do two things:
-      //store display value as tempB
-      //pass OP, tempA, and tempB into operate function
-//4. return operate(OP, tempA, tempB)
-//5. find a way to cancel
 
 
 
