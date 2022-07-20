@@ -4,13 +4,13 @@ const add = function(a, b) {
     return parseInt(a) + parseInt(b);	
    };
 const subtract = function(a, b) {
-    return a - b;
+    return parseInt(a) - parseInt(b);
 };   
 const multiply = function(a, b) {
-    return a * b;
+    return parseInt(a) * parseInt(b);
 };  
 const divide = function(a, b) {
-    return a / b;
+    return parseInt(a) / parseInt(b);
 }
   
 const operate = function(operator, num1, num2) {
@@ -106,14 +106,15 @@ operatorBtns.forEach(operator => {
     const tempA = display.textContent;
     const OP = opContainer.textContent;
     display.textContent = "";
-    console.log(tempA);
+    console.log("tempA " + tempA);
+    console.log("OP " + OP);
 
     equalBtn.addEventListener('click', function(){
       const tempB = display.textContent;
-      console.log(tempB);
-      console.log(OP);
+      console.log("tempA " + tempA);
+      console.log("tempB " + tempB);
+      console.log("OP " + OP);
       display.textContent = operate(OP, tempA, tempB);
-
     })
   })
 });
@@ -126,17 +127,11 @@ operatorBtns.forEach(operator => {
       //store display value as tempB
       //pass OP, tempA, and tempB into operate function
 //4. return operate(OP, tempA, tempB)
+//5. find a way to cancel
 
 
 
 
-//add Event listener for ADD function, such that a click triggers this event:
-  //store the display value as TempA
-  //clear text content
-  //await input as TempB
-  //'click =' does two things:
-    //1. stores display.textContent as tempB
-    //2. passes tempA and tempB into addition
 
 
 
